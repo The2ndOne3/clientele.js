@@ -1,13 +1,58 @@
 # clientele.js
 Template engine consolidation library, for the client. Works as Express/Connect middleware.
 
-Codebase greatly inspired by [Consolidate.js](//github.com/visionmedia/consolidate.js).
+Clientele greatly inspired by [Consolidate.js](//github.com/visionmedia/consolidate.js) and [jade-browser](//github.com/storify/jade-browser).
 
 ## Installation
 Clientele is still under development.
 
 ## Usage
-Clientele is built as an Express/Connect middleware. To serve pre-compiled client-side templates of any engine, simply embed the endpoint (default: `/js/templates.js`) into the page and add `clt.engine()` to the stack of any Express-like app to access pre-compiled client-side views (default: `public/templates`).
+Clientele is built as an Express/Connect middleware. To serve pre-compiled client-side templates of any engine, simply embed the endpoint (default: `/js/templates.js`) into the page and add `clientele.engine()` to the stack of any Express-like app to access pre-compiled client-side views (default: `public/templates/**`).
+
+All engines use the following signature: `clientele.engine(templates, endpoint, options);`
+
+### Params
+* `templates` A pattern to glob for templates (default: `public/templates/**`)
+* `endpoint` The filename of the resulting compiled templates (default: `/js/templates.js`)
+* `options` Options object, see below (optional)
+
+#### Options
+* `namespace` Namespace for the browser (default: engine name)
+* `minify` Minifies the output (default: false)
+* `cache` Caches compiled templates (default: true)
+
+```js
+var clt = require('clientele');
+
+//...
+app.use(clt.engine('public/templates/**', '/js/templates.js', {
+  root: __dirname,
+  namespace: 'engine-name',
+  minify: false,
+  cache: true
+}));
+//...
+```
+
+### Browser Usage
+On the client, loading the script at the endpoint will load the engine runtime at `window.namespace`, which defaults to `window.engine`. For example, a Jade engine will default to a Jade runtime at `window.jade`. From there, you can call either `window.jade.render(template, locals, callback)` or `window.jade.renderSync(template, locals)`.
+
+Templates are specified by filename relative to the template directory. Including the extension is not necessary.
+
+```js
+// Asynchronous rendering.
+jade.render('example', {title: 'yes'}, function(err, result){
+  if(err){
+    return console.error('Something went wrong!');
+  }
+  doSomething(result);
+});
+
+// Synchronous rendering.
+result = jade.renderSync('example', {title: 'yes'});
+```
+
+By default, Clientele will cache loaded templates on the client. To force a reload, call `engine.reload(template)`.
 
 ## Supported Engines
 <!-- * Jade -->
@@ -22,7 +67,7 @@ var clt = require('clientele')
 var app = express();
 
 // ...
-app.use(clt.jade()); 
+app.use(clt.jade());
 // ...
 
 ```

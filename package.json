@@ -1,0 +1,28 @@
+{
+  "name": "clientele",
+  "version": "0.0.1",
+  "description": "Client-side template engine consolidation library",
+  "keywords": [
+    "template",
+    "engine",
+    "view",
+    "client-side",
+    "clientside"
+  ],
+  "author": "Leo Zhang <leo@lehaozhang.com>",
+  "dependencies": {
+    "consolidate": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  },
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/The2ndOne3/clientele.js.git"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  }
+}

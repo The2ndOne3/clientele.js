@@ -1,7 +1,10 @@
 # clientele.js
+
+[![Build Status](https://travis-ci.org/The2ndOne3/clientele.js.png?branch=master)](https://travis-ci.org/The2ndOne3/clientele.js)
+
 Template engine consolidation library, for the client. Works as Express/Connect middleware.
 
-Clientele greatly inspired by [Consolidate.js](//github.com/visionmedia/consolidate.js) and [jade-browser](//github.com/storify/jade-browser).
+Clientele greatly inspired by [Consolidate.js](//github.com/visionmedia/consolidate.js), [jade-browser](//github.com/storify/jade-browser), [Blade](//github.com/bminer/node-blade), and [Dust](//github.com/akdubya/dustjs).
 
 ## Installation
 Clientele is still under development.

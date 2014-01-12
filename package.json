@@ -15,7 +15,12 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "chai": "*"
+    "chai": "*",
+
+    "express": "*",
+    "supertest": "*",
+
+    "jade": "*"
   },
   "main": "index",
   "repository": {

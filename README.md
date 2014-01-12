@@ -29,7 +29,6 @@ var clt = require('clientele');
 
 //...
 app.use(clt.engine('public/templates/**', '/js/templates.js', {
-  root: __dirname,
   namespace: 'engine-name',
   minify: false,
   cache: true

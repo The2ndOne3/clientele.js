@@ -1,1 +1,1 @@
-module.exports = require('lib/clientele');
+module.exports = require('./lib/clientele');

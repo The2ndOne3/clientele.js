@@ -1,3 +1,5 @@
 {
-  "variable-name": "hello"
+  "user": {
+    "name": "Tobi"
+  }
 }

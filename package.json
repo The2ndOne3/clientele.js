@@ -20,6 +20,10 @@
     "mocha": "*",
     "chai": "*",
 
+    "karma": "*",
+    "karma-mocha": "*",
+    "phantomjs": "*",
+
     "express": "*",
     "supertest": "*",
 

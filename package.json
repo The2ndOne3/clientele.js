@@ -11,7 +11,9 @@
   ],
   "author": "Leo Zhang <leo@lehaozhang.com>",
   "dependencies": {
-    "consolidate": "*"
+    "consolidate": "*",
+    "uglify-js": "*",
+    "glob": "*"
   },
   "devDependencies": {
     "mocha": "*",

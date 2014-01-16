@@ -22,7 +22,7 @@ All engines use the following signature: `clientele.engine(templates, endpoint, 
 #### Options
 * `namespace` Namespace for the browser (default: engine name)
 * `minify` Minifies the output (default: false)
-* `cache` Caches compiled templates (default: true)
+* `noCache` Do not cache compiled templates (default: false)
 
 ```js
 var clt = require('clientele');
@@ -31,7 +31,7 @@ var clt = require('clientele');
 app.use(clt.engine('public/templates/**', '/js/templates.js', {
   namespace: 'engine-name',
   minify: false,
-  cache: true
+  noCache: false
 }));
 //...
 ```

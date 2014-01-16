@@ -4,7 +4,7 @@
 
 Template engine consolidation library, for the client. Works as Express/Connect middleware.
 
-Clientele greatly inspired by [Consolidate.js](//github.com/visionmedia/consolidate.js), [jade-browser](//github.com/storify/jade-browser), [Blade](//github.com/bminer/node-blade), and [Dust](//github.com/akdubya/dustjs).
+Clientele is greatly inspired by [Consolidate.js](//github.com/visionmedia/consolidate.js), [jade-browser](//github.com/storify/jade-browser), [Blade](//github.com/bminer/node-blade), and [Dust](//github.com/akdubya/dustjs).
 
 ## Installation
 Clientele is still under development.
@@ -37,9 +37,9 @@ app.use(clt.engine('public/templates/**', '/js/templates.js', {
 ```
 
 ### Browser Usage
-On the client, loading the script at the endpoint will load the engine runtime at `window.namespace`, which defaults to `window.engine`. For example, a Jade engine will default to a Jade runtime at `window.jade`. From there, you can call either `window.jade.render(template, locals, callback)` or `window.jade.renderSync(template, locals)`.
+On the client, loading the script at the endpoint will load the engine runtime at `window.namespace`, which defaults to `window.engine_name`. For example, a Jade engine will default to a Jade runtime at `window.jade`. From there, you can call either `window.jade.render(template, locals, callback)` or `window.jade.renderSync(template, locals)`.
 
-Templates are specified by filename relative to the template directory. Including the extension is not necessary.
+Templates are specified by filename relative to the template directory. Including the extension is not necessary. They are loaded asynchronously and separately from the engine; to preload a template, call `engine_name.preload(template)`. By default, Clientele will cache loaded templates on the client. To force a reload, call `engine.reload(template)`.
 
 ```js
 // Asynchronous rendering.
@@ -54,10 +54,8 @@ jade.render('example', {title: 'yes'}, function(err, result){
 result = jade.renderSync('example', {title: 'yes'});
 ```
 
-By default, Clientele will cache loaded templates on the client. To force a reload, call `engine.reload(template)`.
-
 ## Supported Engines
-<!-- * Jade -->
+* Jade
 
 ## Example
 app.js:

@@ -61,8 +61,9 @@ exports.test = function(name){
           if(err){
             throw err;
           }
-          eval(res);
+          eval(res.text);
           should.exist(window[name]);
+          done();
         });
     });
 

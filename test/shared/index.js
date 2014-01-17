@@ -67,7 +67,10 @@ exports.test = function(name){
         });
     });
 
-    it('properly performs a client render');
+    it('properly performs a client render', function(done){
+      request.get();
+    });
+
     it('properly performs a synchronous client render');
   });
 };

@@ -13,8 +13,7 @@
   "dependencies": {
     "consolidate": "*",
     "uglify-js": "*",
-    "glob": "*",
-    "shortid": "*"
+    "glob": "*"
   },
   "devDependencies": {
     "mocha": "*",

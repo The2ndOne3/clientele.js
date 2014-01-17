@@ -5,17 +5,18 @@ var request = require('supertest')
 
   , should = require('chai').should()
 
-  , clientele = require('../../index');
+  , clientele = require('../../index')
+  , path = require('path');
 
 exports.test = function(name){
   var data = require('../fixtures/data');
 
   describe(name, function(){
-    var app, server;
+    var app, server, window;
 
     before(function(done){
       app = express();
-      app.use(clientele[name]());
+      app.use(clientele[name](path.join(__dirname, '..', 'fixtures')));
       app.use(app.router);
 
       app.get('/connection-test', function(req, res){
@@ -35,6 +36,7 @@ exports.test = function(name){
 
     it('connects to the testing server', function(done){
       should.exist(app);
+
       request
         .get('/connection-test')
         .set('Accept', 'application/json')
@@ -47,5 +49,24 @@ exports.test = function(name){
           done();
         });
     });
+
+    it('mounts a renderer at the endpoint', function(done){
+      should.exist(app);
+
+      window = {};
+      request
+        .get('/js/templates.js')
+        .expect(200)
+        .end(function(err, res){
+          if(err){
+            throw err;
+          }
+          eval(res);
+          should.exist(window[name]);
+        });
+    });
+
+    it('properly performs a client render');
+    it('properly performs a synchronous client render');
   });
 };
